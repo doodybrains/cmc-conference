@@ -13,7 +13,7 @@ class Index extends Component {
         {sections.map((sec, i) => {
           return (
             <a key={i} href={sec.slug}>
-              <h1>{sec.title}</h1>
+              <h2>{sec.title}</h2>
             </a>
           )
         })}

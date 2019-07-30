@@ -13,12 +13,13 @@ class SectionTemplate extends Component {
 
     return (
       <Layout>
+      <h2>{title}</h2>
       {children
         .filter(item => item.__typename === 'ArenaBlock')
         .map((item, index) => {
           if (item.image) {
             return (
-              <div key={index} style={{padding: '0 30%', border: '10px solid mediumpurple'}}>
+              <div key={index} style={{padding: '0 30%', marginBottom: '20px'}}>
                 <Img
                   fluid={item.image.childImageSharp.fluid}
                 />
@@ -27,7 +28,7 @@ class SectionTemplate extends Component {
           } else if (item.content_html) {
             return (
               <div
-                style={{padding: '0 30%', border: '10px solid mediumpurple', textAlign: 'center'}}
+                style={{padding: '0 30%', textAlign: 'center', marginBottom: '20px'}}
                 key={index}
                 dangerouslySetInnerHTML={{ __html: item.content_html }}
               />
@@ -56,7 +57,7 @@ export const pageQuery = graphql`
           content_html
           image {
             childImageSharp {
-              fluid(maxWidth: 1280) {
+              fluid(maxWidth: 1600) {
                 ...GatsbyImageSharpFluid_noBase64
               }
             }

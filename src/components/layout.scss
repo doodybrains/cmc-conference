@@ -1,7 +1,41 @@
+@font-face {
+  font-family: 'bagnardregular';
+  src: url('../images/bagnard-webfont.woff2') format('woff2'),
+       url('../images/bagnard-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background: tomato;
+  font-family: 'bagnardregular';
+  padding: 20px 20px 100px 20px;
+  margin: 0;
+}
 
-  h1 {
-    color: white;
+h1 {
+  color: white;
+  font-size: 6em;
+  margin: 0 0 45px 0;
+  word-break: break-word;
+}
+
+a {
+  display: block;
+  color: white !important;
+  text-decoration: none;
+}
+
+h2 {
+  color: white;
+  margin: 0 0 25px 0;
+  font-size: 4em;
+  border-bottom: 3px solid white;
+  line-height: 1em;
+  word-break: break-word;
+
+  &:hover {
+    color: #ffee38 !important;
+    border-color: #ffee38;
   }
 }

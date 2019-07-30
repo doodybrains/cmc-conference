@@ -4,7 +4,7 @@ import React from "react"
 
 const Header = ({ siteTitle }) => (
   <header>
-    computer mouse conference
+    <h1>computer mouse conference</h1>
   </header>
 )
 
