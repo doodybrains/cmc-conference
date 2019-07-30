@@ -1,7 +1,37 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
 
-// You can delete this file if you're not using it
+  const sectionTemplate = require.resolve(`./src/templates/section.js`)
+
+  return graphql(`
+    {
+      allArenaChannel {
+        edges {
+          node {
+            children {
+              __typename
+              ... on ArenaInnerChannel {
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    // Create all the pages
+    result.data.allArenaChannel.edges.forEach(edge => {
+      edge.node.children
+        .filter(item => item.__typename === 'ArenaInnerChannel')
+        .forEach(child => {
+          createPage({
+            path: `${child.slug}`,
+            component: sectionTemplate,
+            context: {
+              slug: child.slug,
+            },
+          })
+        })
+    })
+  })
+}

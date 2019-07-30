@@ -1,21 +1,45 @@
-import React from "react"
-import { Link } from "gatsby"
-
+import React, { Component } from "react";
+import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+class Index extends Component {
+  render() {
+    const channels = this.props.data.allArenaChannel.edges[0];
+    const sections = channels.node.children;
 
-export default IndexPage
+    return (
+      <Layout>
+        {sections.map((sec, i) => {
+          return (
+            <a key={i} href={sec.slug}>
+              <h1>{sec.title}</h1>
+            </a>
+          )
+        })}
+      </Layout>
+    )
+  }
+}
+
+export const pageQuery = graphql`
+query {
+  allArenaChannel {
+    edges {
+      node {
+        children {
+          __typename
+          ... on ArenaInnerChannel {
+            title
+            slug
+            metadata {
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
+export default Index
