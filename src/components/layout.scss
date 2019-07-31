@@ -15,9 +15,12 @@ body {
 
 h1 {
   color: white;
-  font-size: 6em;
+  font-size: 3em;
   margin: 0 0 45px 0;
   word-break: break-word;
+  @media screen and (min-width: 768px) {
+    font-size: 6em;
+  }
 }
 
 a {
@@ -29,13 +32,20 @@ a {
 h2 {
   color: white;
   margin: 0 0 25px 0;
-  font-size: 4em;
+  font-size: 1.25em;
   border-bottom: 3px solid white;
   line-height: 1em;
   word-break: break-word;
+  @media screen and (min-width: 768px) {
+    font-size: 4em;
+  }
 
   &:hover {
     color: #ffee38 !important;
     border-color: #ffee38;
   }
+}
+
+header a:hover h1 {
+  color: #ffee38;
 }

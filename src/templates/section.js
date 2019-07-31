@@ -7,38 +7,42 @@ class SectionTemplate extends Component {
   render() {
     const {
       title,
-      metadata: { description },
+      metadata,
       children,
     } = this.props.data.arenaInnerChannel
-
+    console.log(metadata);
     return (
       <Layout>
-      <h2>{title}</h2>
-      {children
-        .filter(item => item.__typename === 'ArenaBlock')
-        .map((item, index) => {
-          if (item.image) {
-            return (
-              <div key={index} style={{padding: '0 30%', marginBottom: '20px'}}>
-                <Img
-                  fluid={item.image.childImageSharp.fluid}
-                />
-              </div>
-            )
-          } else if (item.content_html) {
-            return (
-              <div
-                style={{padding: '0 30%', textAlign: 'center', marginBottom: '20px'}}
-                key={index}
-                dangerouslySetInnerHTML={{ __html: item.content_html }}
-              />
-            )
-          } else {
-            return (
-              <h1 key={index}>content text</h1>
-            )
-          }
-        })}
+        <h2 style={{marginBottom: '40px'}}>{title}</h2>
+        <h3 style={{marginBottom: '40px', color: 'white', fontSize: '2.25em'}}>{metadata.description}</h3>
+        {children
+          .filter(item => item.__typename === 'ArenaBlock')
+          .map((item, index) => {
+            console.log(item);
+            if (item.image) {
+              return (
+                <div key={index} style={{padding: '0 20%', margin: '30px auto 30px auto'}}>
+                  <Img
+                    fluid={item.image.childImageSharp.fluid}
+                  />
+                </div>
+              )
+            } else if (item.content_html) {
+              let itemTitle;
+              if (item.title) itemTitle = item.title;
+              return (
+                <div key={index}>
+                  <h4 style={{padding: '0 2%', color: 'white', textAlign: 'center', marginBottom: '20px', fontSize: '1.75em'}}>{itemTitle}</h4>
+                  <div
+                    style={{padding: '0 2%', color: 'white', textAlign: 'center', marginBottom: '20px', fontSize: '1.25em'}}
+                    dangerouslySetInnerHTML={{ __html: item.content_html }}
+                  />
+                </div>
+              )
+            } else {
+              return null;
+            }
+          })}
       </Layout>
     )
   }
@@ -54,6 +58,7 @@ export const pageQuery = graphql`
       children {
         __typename
         ... on ArenaBlock {
+          title
           content_html
           image {
             childImageSharp {

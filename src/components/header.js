@@ -4,7 +4,7 @@ import React from "react"
 
 const Header = ({ siteTitle }) => (
   <header>
-    <h1>computer mouse conference</h1>
+    <a href="/"><h1>computer mouse conference</h1></a>
   </header>
 )
 
