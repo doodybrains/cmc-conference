@@ -5,6 +5,12 @@
   font-weight: normal;
   font-style: normal;
 }
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 body {
   background: tomato;
@@ -48,4 +54,32 @@ h2 {
 
 header a:hover h1 {
   color: #ffee38;
+}
+
+.grid {
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .image {
+    padding: 20px;
+    width: 100%;
+    @media screen and (min-width: 768px) {
+      width: 33.33%;
+    }
+  }
+
+  .text {
+    color: white;
+    padding: 20px;
+    width: 100%;
+    font-size: 1.5em;
+    @media screen and (min-width: 768px) {
+      font-size: 2em;
+      width: 33.33%;
+    }
+  }
 }
