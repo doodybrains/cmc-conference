@@ -14,7 +14,7 @@ class SectionTemplate extends Component {
     return (
       <Layout>
         <h2 style={{marginBottom: '40px'}}>{title}</h2>
-        <h3 style={{marginBottom: '40px', color: 'white', fontSize: '2.25em'}}>{metadata.description}</h3>
+        <h3>{metadata.description}</h3>
 
         <div className="grid">
           {children
@@ -22,13 +22,24 @@ class SectionTemplate extends Component {
             .map((item, index) => {
               console.log(item);
               if (item.image) {
-                return (
-                  <div className="image" key={index}>
-                    <Img
-                      fluid={item.image.childImageSharp.fluid}
-                    />
-                  </div>
-                )
+                if (item.title === "sub.jpg") {
+                  return (
+                    <div className="image large" key={index}>
+                      <Img
+                        fluid={item.image.childImageSharp.fluid}
+                      />
+                    </div>
+                  )
+                } else {
+                  return (
+                    <div className="image" key={index}>
+                      <Img
+                        fluid={item.image.childImageSharp.fluid}
+                      />
+                    </div>
+                  )
+                }
+
               } else if (item.content_html) {
                 let itemTitle;
                 if (item.title) itemTitle = item.title;
