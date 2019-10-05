@@ -100,15 +100,22 @@ header a:hover h1 {
       font-size: 1.5em;
       width: 33.33%;
     }
-
-    h4 {
-      margin: 0 0 12px 0;
+    a {
+      display: block;
+      border-bottom: 5px solid royalblue;
     }
+    h4 {
+      margin: 0;
+      line-height: 1em;
+    }
+
     a h4:hover {
       color: royalblue;
+
     }
+
     p {
-      margin: 0 0 22px 0;
+      margin: 12px 0 22px 0;
     }
   }
 }

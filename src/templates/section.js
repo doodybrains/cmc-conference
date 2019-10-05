@@ -48,7 +48,13 @@ class SectionTemplate extends Component {
                 console.log(item);
                 return (
                   <div className="text" key={index}>
-                    <a href={itemLink} target="_blank"><h4>{itemTitle}</h4></a>
+                    {itemLink &&
+                      <a href={itemLink} target="_blank"><h4>{itemTitle}</h4></a>
+                    }
+                    {!itemLink &&
+                      <h4>{itemTitle}</h4>
+                    }
+
                     <div
                       dangerouslySetInnerHTML={{ __html: item.content_html }}
                     />
