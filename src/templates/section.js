@@ -42,11 +42,13 @@ class SectionTemplate extends Component {
 
               } else if (item.content_html) {
                 let itemTitle;
+                let itemLink;
                 if (item.title) itemTitle = item.title;
-
+                if (item.description) itemLink = item.description;
+                console.log(item);
                 return (
                   <div className="text" key={index}>
-                    <h4>{itemTitle}</h4>
+                    <a href={itemLink} target="_blank"><h4>{itemTitle}</h4></a>
                     <div
                       dangerouslySetInnerHTML={{ __html: item.content_html }}
                     />
@@ -74,6 +76,7 @@ export const pageQuery = graphql`
         ... on ArenaBlock {
           title
           content_html
+          description
           image {
             childImageSharp {
               fluid(maxWidth: 1600) {
