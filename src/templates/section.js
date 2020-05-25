@@ -17,7 +17,7 @@ class SectionTemplate extends Component {
         <h3>{metadata.description}</h3>
         <div className="grid">
           {title === "computer mouse zine" &&
-            <a className="zine" href="" target="">Zine by Neta Bomani &#8669; &#8669;</a>
+            <a className="zine" href="https://www.computermouseconference.net/computer-mouse-zine.pdf" target="">Zine by Neta Bomani &#8669; &#8669;</a>
           }
           {children
             .filter(item => item.__typename === 'ArenaBlock')
