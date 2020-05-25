@@ -10,13 +10,15 @@ class SectionTemplate extends Component {
       metadata,
       children,
     } = this.props.data.arenaInnerChannel
-    console.log(metadata);
+
     return (
       <Layout>
         <h2 style={{marginBottom: '40px'}}>{title}</h2>
         <h3>{metadata.description}</h3>
-
         <div className="grid">
+          {title === "computer mouse zine" &&
+            <a className="zine" href="" target="">Zine by Neta Bomani &#8669; &#8669;</a>
+          }
           {children
             .filter(item => item.__typename === 'ArenaBlock')
             .map((item, index) => {
@@ -39,13 +41,12 @@ class SectionTemplate extends Component {
                     </div>
                   )
                 }
-
               } else if (item.content_html) {
                 let itemTitle;
                 let itemLink;
                 if (item.title) itemTitle = item.title;
                 if (item.description) itemLink = item.description;
-                console.log(item);
+
                 return (
                   <div className="text" key={index}>
                     {itemLink &&
@@ -54,7 +55,6 @@ class SectionTemplate extends Component {
                     {!itemLink &&
                       <h4>{itemTitle}</h4>
                     }
-
                     <div
                       dangerouslySetInnerHTML={{ __html: item.content_html }}
                     />
