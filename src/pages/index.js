@@ -10,13 +10,7 @@ class Index extends Component {
 
     return (
       <Layout>
-        {sections.map((sec, i) => {
-          return (
-            <a key={i} href={sec.slug}>
-              <h2>{sec.title}</h2>
-            </a>
-          )
-        })}
+        <a href="https://2019.computermouseconference.net/what-is-this-conference">Computer Mouse Conference</h1>
       </Layout>
     )
   }
