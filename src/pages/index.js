@@ -7,7 +7,6 @@ class Index extends Component {
   render() {
     const channels = this.props.data.allArenaChannel.edges[0];
     const sections = channels.node.children;
-
     return (
       <Layout>
         {sections.map((sec, i) => {
