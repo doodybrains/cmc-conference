@@ -10,7 +10,9 @@ class Index extends Component {
 
     return (
       <Layout>
-        <a href="https://2019.computermouseconference.net/what-is-this-conference">Computer Mouse Conference</h1>
+        <div>
+          <a href="https://2019.computermouseconference.net/what-is-this-conference">Computer Mouse Conference</a>
+        </div>
       </Layout>
     )
   }
