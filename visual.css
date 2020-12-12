@@ -57,7 +57,7 @@ h1, h2, h3, h4 {
   margin: 0;
 }
 h1, p {
-  font-size: 1.8675em;
+  font-size: 1.675em;
 }
 .archive {
   position: absolute;
@@ -65,8 +65,16 @@ h1, p {
   right: 16px;
   color: black !important;
 }
+
+a {
+  color: yellow;
+  text-decoration: none;
+  border-bottom: 3px dotted black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: orange;
+}
 @media only screen and (min-width: 767px) {
   h1, p {
-    font-size: 3em;
+    font-size: 2em;
   }
 }
